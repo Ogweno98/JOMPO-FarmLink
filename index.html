@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JOMPO Farmers App</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>JOMPO Farmers App</h1>
+    <nav>
+      <button onclick="showSection('login')">Login</button>
+      <button onclick="showSection('signup')">Sign Up</button>
+      <button onclick="showSection('market')">Marketplace</button>
+      <button id="adminBtn" style="display:none" onclick="showSection('admin')">Admin Dashboard</button>
+      <button onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Login -->
+    <section id="login" class="page">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </section>
+
+    <!-- Signup -->
+    <section id="signup" class="page" style="display:none;">
+      <h2>Sign Up</h2>
+      <input type="email" id="signupEmail" placeholder="Email" />
+      <input type="password" id="signupPassword" placeholder="Password" />
+      <button onclick="signup()">Sign Up</button>
+    </section>
+
+    <!-- Marketplace -->
+    <section id="market" class="page" style="display:none;">
+      <h2>Marketplace</h2>
+      <div id="productForm">
+        <h3>Add Product</h3>
+        <input type="text" id="productName" placeholder="Product Name"/>
+        <input type="number" id="productPrice" placeholder="Price (KSH)"/>
+        <select id="productLocation"></select>
+        <div class="small">
+          <label for="newLocation">Add location</label>
+          <input id="newLocation" placeholder="Type name and click Add" />
+          <button onclick="addLocation()">Add</button>
+        </div>
+        <input type="file" id="productImage" accept="image/*"/>
+        <button onclick="addProduct()">Add Product</button>
+      </div>
+
+      <div id="filters">
+        <input type="text" id="searchInput" placeholder="Search by product name" oninput="applyFilters()"/>
+        <select id="locationFilter" onchange="applyFilters()">
+          <option value="">All Locations</option>
+        </select>
+      </div>
+
+      <div id="productsList"></div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin" class="page" style="display:none;">
+      <h2>Admin Dashboard</h2>
+
+      <div class="card" style="margin-bottom:12px;">
+        <h3>Products (manage)</h3>
+        <div id="adminProductsList">Loading products…</div>
+      </div>
+
+      <div class="card" style="margin-bottom:12px;">
+        <h3>Locations (manage)</h3>
+        <div id="adminLocationsList">Loading locations…</div>
+        <div style="margin-top:8px;">
+          <input id="adminNewLocation" placeholder="New location name" />
+          <button onclick="adminAddLocation()">Add location</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Users (manage)</h3>
+        <div id="adminUsersList">Loading users…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">JOMPO — Connecting farmers & buyers</footer>
+
+  <!-- Firebase compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+
+  <!-- Main app -->
+  <script src="app.js"></script>
+</body>
+</html>
