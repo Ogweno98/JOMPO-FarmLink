@@ -1,20 +1,23 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Attach event listener to login form
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
-  authDomain: "jompo-farmlink.firebaseapp.com",
-  projectId: "jompo-farmlink",
-  storageBucket: "jompo-farmlink.firebasestorage.app",
-  messagingSenderId: "987751403891",
-  appId: "1:987751403891:web:8076f74c872c9b1507f506",
-  measurementId: "G-W42R2QN4DF"
-};
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      alert("Login successful ✅");
+      console.log("User:", userCredential.user);
+      // redirect to homepage after login
+      window.location.href = "index.html"; 
+    })
+    .catch((error) => {
+      alert("Error: " + error.message);
+      console.error(error);
+    });
+});
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -384,4 +387,5 @@ auth.onAuthStateChanged(async (user) => {
     updateAdminUI(null);
   }
 });
+
 
