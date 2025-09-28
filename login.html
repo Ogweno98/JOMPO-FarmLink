@@ -5,47 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JOMPO FarmLink - Login</title>
   <link rel="stylesheet" href="style.css" />
-  <script type="module">
-    // Import Firebase SDKs
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  <script type="module" src="app.js"></script>
+<script type="module">
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    // Your Firebase configuration (paste from Firebase Console → Project settings → SDK setup)
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
+  document.addEventListener("DOMContentLoaded", () => {
+    const auth = getAuth(); // uses Firebase from app.js
+    const loginForm = document.getElementById("login-form");
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    // Handle login
-    document.addEventListener("DOMContentLoaded", () => {
-      const loginForm = document.getElementById("login-form");
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-      loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            alert("✅ Login successful! Welcome " + user.email);
-            window.location.href = "index.html"; // redirect to main app
-          })
-          .catch((error) => {
-            alert("❌ " + error.message);
-          });
-      });
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("✅ Login successful! Welcome " + user.email);
+          window.location.href = "index.html"; // redirect to app
+        })
+        .catch((error) => {
+          alert("❌ " + error.message);
+        });
     });
-  </script>
+  });
+</script>
+
 </head>
 <body>
   <div class="container">
