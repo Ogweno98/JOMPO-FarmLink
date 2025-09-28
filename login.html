@@ -1,44 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JOMPO FarmLink - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #27ae60;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #219150;
+    }
+  </style>
 </head>
 <body>
-  <h2>JOMPO FarmLink Login</h2>
-  <form id="login-form">
-    <label>Email:</label>
-    <input type="email" id="email" required />
-    <br>
-    <label>Password:</label>
-    <input type="password" id="password" required />
-    <br>
-    <button type="submit">Login</button>
-  </form>
+
+  <div class="login-container">
+    <h2>JOMPO FarmLink Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Enter Email" required>
+      <input type="password" id="password" placeholder="Enter Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
   <!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
-<script>
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
-    authDomain: "jompo-farmlink.firebaseapp.com",
-    projectId: "jompo-farmlink",
-    storageBucket: "jompo-farmlink.firebasestorage.app",
-    messagingSenderId: "987751403891",
-    appId: "1:987751403891:web:8076f74c872c9b1507f506",
-    measurementId: "G-W42R2QN4DF"
-  };
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
+      authDomain: "jompo-farmlink.firebaseapp.com",
+      projectId: "jompo-farmlink",
+      storageBucket: "jompo-farmlink.firebasestorage.app",
+      messagingSenderId: "987751403891",
+      appId: "1:987751403891:web:8076f74c872c9b1507f506",
+      measurementId: "G-W42R2QN4DF"
+    };
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
-<!-- Load your app.js after Firebase -->
-<script src="app.js"></script>
-
+  <!-- Your login logic -->
+  <script src="app.js"></script>
 </body>
 </html>
+
