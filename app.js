@@ -1,4 +1,4 @@
-// Attach event listener to login form
+// Handle login form
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -7,16 +7,17 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      alert("Login successful ✅");
+      alert("✅ Login successful! Welcome to JOMPO FarmLink.");
       console.log("User:", userCredential.user);
-      // redirect to homepage after login
-      window.location.href = "index.html"; 
+      // redirect after login
+      window.location.href = "index.html";
     })
     .catch((error) => {
-      alert("Error: " + error.message);
+      alert("❌ Error: " + error.message);
       console.error(error);
     });
 });
+
 
 
 // Initialize Firebase
@@ -387,5 +388,6 @@ auth.onAuthStateChanged(async (user) => {
     updateAdminUI(null);
   }
 });
+
 
 
