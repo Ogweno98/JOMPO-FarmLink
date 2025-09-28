@@ -1,3 +1,24 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
+  authDomain: "jompo-farmlink.firebaseapp.com",
+  projectId: "jompo-farmlink",
+  storageBucket: "jompo-farmlink.firebasestorage.app",
+  messagingSenderId: "987751403891",
+  appId: "1:987751403891:web:8076f74c872c9b1507f506",
+  measurementId: "G-W42R2QN4DF"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 // ====================
 // JOMPO App (extended) with Admin Dashboard
 // Replace with your Firebase config below
@@ -363,3 +384,4 @@ auth.onAuthStateChanged(async (user) => {
     updateAdminUI(null);
   }
 });
+
