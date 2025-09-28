@@ -17,49 +17,28 @@
     <button type="submit">Login</button>
   </form>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
-    // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+<script>
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
+    authDomain: "jompo-farmlink.firebaseapp.com",
+    projectId: "jompo-farmlink",
+    storageBucket: "jompo-farmlink.firebasestorage.app",
+    messagingSenderId: "987751403891",
+    appId: "1:987751403891:web:8076f74c872c9b1507f506",
+    measurementId: "G-W42R2QN4DF"
+  };
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
-  authDomain: "jompo-farmlink.firebaseapp.com",
-  projectId: "jompo-farmlink",
-  storageBucket: "jompo-farmlink.firebasestorage.app",
-  messagingSenderId: "987751403891",
-  appId: "1:987751403891:web:8076f74c872c9b1507f506",
-  measurementId: "G-W42R2QN4DF"
-};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+<!-- Load your app.js after Firebase -->
+<script src="app.js"></script>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    document.getElementById("login-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          alert("✅ Welcome " + userCredential.user.email);
-          window.location.href = "index.html";
-        })
-        .catch((error) => {
-          alert("❌ Error: " + error.code + " - " + error.message);
-        });
-    });
-  </script>
 </body>
 </html>
