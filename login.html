@@ -9,28 +9,27 @@
 <script type="module">
   import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const auth = getAuth(); // uses Firebase from app.js
-    const loginForm = document.getElementById("login-form");
+  const auth = getAuth();
 
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          alert("✅ Login successful! Welcome " + user.email);
-          window.location.href = "index.html"; // redirect to app
-        })
-        .catch((error) => {
-          alert("❌ " + error.message);
-        });
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert("✅ Login successful! Welcome " + user.email);
+        window.location.href = "index.html"; // redirect after login
+      })
+      .catch((error) => {
+        // Show exact Firebase error
+        alert("❌ Error: " + error.code + " - " + error.message);
+      });
   });
 </script>
+
 
 </head>
 <body>
