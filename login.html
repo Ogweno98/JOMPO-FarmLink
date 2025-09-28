@@ -59,12 +59,12 @@
     </form>
   </div>
 
-  <!-- Firebase SDKs -->
+  <!-- ✅ Load Firebase SDKs FIRST -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
+  <!-- ✅ Initialize Firebase -->
   <script>
-    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyBQnDRbmUjgSNLhvl_0eDhOvaoR0zCpmyw",
       authDomain: "jompo-farmlink.firebaseapp.com",
@@ -75,12 +75,10 @@
       measurementId: "G-W42R2QN4DF"
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
 
-  <!-- Your login logic -->
+  <!-- ✅ Load your app.js LAST -->
   <script src="app.js"></script>
 </body>
 </html>
-
